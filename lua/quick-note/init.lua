@@ -1,11 +1,15 @@
 local M = {}
 
-M.QuickNote = function(args)
-	print("Your args " .. args)
+M.quickNote = function(opts)
+	local args = vim.split(opts.args, " ")
+	print("Your args " .. vim.inspect(args))
 end
 
-vim.api.nvim_create_user_command("QuickNote", function(opts)
-	M.QuickNote(opts.args)
-end, { nargs = "?" })
+vim.api.nvim_create_user_command(
+	"QuickNote",
+	function(opts)
+		M.quickNote(opts.args)
+	end,
+	{ nargs = "*" })
 
 return M
