@@ -70,16 +70,14 @@ local function open()
 	vim.cmd(cmd_string)
 end
 
-local function open_with_opts(opts) 
+local function open_with_opts(opts)
 	open()
-
-	return
 	-- WIP
-	local first_arg = opts[1]  
-	if first_arg == 'data' then
-		table.remove(opts, 1)
-		return data_action(opts)
-	end
+	-- local first_arg = opts[1]
+	-- if first_arg == 'data' then
+	-- 	table.remove(opts, 1)
+	-- 	return data_action(opts)
+	-- end
 end
 
 M.quickNote = function(opts)
