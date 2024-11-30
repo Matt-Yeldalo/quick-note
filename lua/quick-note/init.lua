@@ -52,15 +52,34 @@ local function get_path()
 	return path
 end
 
+local function data_action(opts)
+	local action = opts[1]
+	-- TODO: actions will let you run commands within the data dir
+end
+
 -- local function write_path(data)
 -- 	get_path():write(vim.json.decode(data), "w")
 -- end
 
 local function open()
-	local file_name = fetch_opts('file_name')
 	local path = get_path()
+	local file_name = fetch_opts("file_name")
+	local file_type = fetch_opts("file_type")
 	local open_cmd = fetch_opts("open_cmd")
-	vim.cmd(open_cmd .. " " .. path.filename .. "/" .. file_name)
+	local cmd_string = open_cmd .. " " .. path.filename .. "/" .. file_name .. file_type
+	vim.cmd(cmd_string)
+end
+
+local function open_with_opts(opts) 
+	open()
+
+	return
+	-- WIP
+	local first_arg = opts[1]  
+	if first_arg == 'data' then
+		table.remove(opts, 1)
+		return data_action(opts)
+	end
 end
 
 M.quickNote = function(opts)
@@ -68,6 +87,10 @@ M.quickNote = function(opts)
 
 	if opts == nil or opts[0] == nil or len < 1 then
 		open()
+	end
+
+	if len < 2 then
+		fetch_opts(opts)
 	end
 end
 
