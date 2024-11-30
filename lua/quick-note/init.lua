@@ -57,7 +57,7 @@ end
 -- end
 
 local function open()
-	local filename = "general.md"
+	local filename = fetch_opts('filename')
 	local path = get_path()
 	local open_cmd = fetch_opts("open_cmd")
 	vim.cmd(open_cmd .. " " .. path.filename .. "/" .. filename)
@@ -65,10 +65,8 @@ end
 
 M.quickNote = function(opts)
 	local len = #opts
-	vim.print(config)
 
 	if opts == nil or opts[0] == nil or len < 1 then
-		print("Opening your workbook")
 		open()
 	end
 end
