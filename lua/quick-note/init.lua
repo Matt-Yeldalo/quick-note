@@ -57,10 +57,10 @@ end
 -- end
 
 local function open()
-	local filename = fetch_opts('filename')
+	local file_name = fetch_opts('file_name')
 	local path = get_path()
 	local open_cmd = fetch_opts("open_cmd")
-	vim.cmd(open_cmd .. " " .. path.filename .. "/" .. filename)
+	vim.cmd(open_cmd .. " " .. path.filename .. "/" .. file_name)
 end
 
 M.quickNote = function(opts)
