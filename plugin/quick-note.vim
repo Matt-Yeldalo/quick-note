@@ -1,1 +1,3 @@
-lua require('quick-note')
+lua require('quick-note').setup()
+
+
