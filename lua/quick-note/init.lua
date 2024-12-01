@@ -88,7 +88,7 @@ M.quickNote = function(opts)
 	end
 
 	if len < 2 then
-		fetch_opts(opts)
+		open_with_opts(opts)
 	end
 end
 
