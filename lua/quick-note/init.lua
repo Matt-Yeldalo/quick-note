@@ -19,7 +19,6 @@ function M.setup(opts)
 	config.setup(opts)
 
 	vim.api.nvim_create_user_command("QuickNote", function()
-		print(opts.args)
 		M.quickNote(vim.split(opts.args or "" , " "))
 	end, { nargs = "*" })
 end
